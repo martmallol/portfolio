@@ -39,7 +39,7 @@ a {
 }
 
 .me, .projects {
-    height: 730px;
+    min-height: 100vh;
     background-color: yellow;
     margin: 0 20px;
     box-sizing: border-box;
@@ -60,6 +60,10 @@ a {
 }
 
 @media screen and (max-width:1330px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
     .box{
         height: auto;
     }
@@ -68,14 +72,17 @@ a {
         margin: 20px;
         height: auto;
         min-width: 450px;
+        justify-content: center;
     }
     .projects {
+        padding: 0;
         width: 90%;
         margin: 20px;
         min-height: 100vh;
         min-width: 450px;
         text-align: center;
         max-width: 700px;
+        justify-content: center;
     }
     .portfolio {
         justify-content: center;
@@ -112,7 +119,7 @@ h3, p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 350px;
+    width: 300px;
 }
 
 .titles {
@@ -147,6 +154,7 @@ h3, p {
     margin: 4px;
     border-radius: 5px;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .app-box img {
