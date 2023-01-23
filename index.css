@@ -38,6 +38,14 @@ a {
     flex-flow: wrap;
 }
 
+.me, .projects {
+    height: 730px;
+    background-color: yellow;
+    margin: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
 .me {
     width: 35%;
     min-width: 550px;
@@ -46,14 +54,9 @@ a {
 }
 
 .projects {
-    width: 42%;
-}
-.me, .projects {
-    
-    height: 730px;
-    background-color: yellow;
-    margin: 0 20px;
-    box-sizing: border-box;
+    width: 44%;
+    padding-top: 71px;
+    min-width: 680px;
 }
 
 @media screen and (max-width:1330px) {
@@ -71,7 +74,16 @@ a {
         margin: 20px;
         min-height: 100vh;
         min-width: 450px;
+        text-align: center;
+        max-width: 700px;
     }
+    .portfolio {
+        justify-content: center;
+    }
+    .app-box {
+        margin: 10px !important;
+    }
+
 }
 
 /* Bio */
@@ -115,8 +127,43 @@ h3, p {
     color: #FD2256;
 }
 
-/*.box .me .links li a i {
-    height:60px;
-}*/
-
 /* Projects */
+.portfolio {
+    background-color: blueviolet;
+    padding: 0.5rem 0;
+    height: 500px;
+    
+    /* Flexbox */
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
+.app-box {
+    background-color: aqua;
+    width: 41%;
+    height: 175px;
+    min-width: 300px;
+    margin: 4px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.app-box img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-bottom: 1px solid black;
+}
+
+.card-text {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
+
+.app-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
