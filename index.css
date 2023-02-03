@@ -77,7 +77,6 @@ a {
         max-width: 1300px;
         
         display: flex;
-        justify-content: space-evenly;
         flex-wrap:wrap;
         align-content: center; /* this was what I was looking for!!!!*/
         align-items: center;
