@@ -6,6 +6,7 @@
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     list-style: none;
+    background-color: #FFCFDB;
 }
 
 a {
@@ -14,14 +15,14 @@ a {
 }
 
 .container {
-    background-color: red;
+    /*background-color: red;*/
     width: 100%;
     height: auto;
 }
 
 .box {
-    background-color: lightblue;
-    width: 100%;
+    /*background-color: lightblue;*/
+    width: 90%;
     height: 770px;
     position: absolute;
     top:0;
@@ -39,27 +40,28 @@ a {
 }
 
 .me, .projects {
-    min-height: 100vh;
-    background-color: yellow;
+    
+    /*background-color: yellow;*/
     margin: 0 20px;
     box-sizing: border-box;
     position: relative;
 }
 
 .me {
-    width: 35%;
+    width: 30%;
     min-width: 550px;
     max-width: 650px;
     max-height: 1000px;
 }
 
 .projects {
-    width: 44%;
+    margin-top: 0.9rem; /*'Martin' & 'My projects' alignment*/
+    width: 30%;
     padding-top: 71px;
-    min-width: 680px;
+    min-width: 630px;
 }
 
-@media screen and (max-width:1330px) {
+@media screen and (max-width:1430px) {
     * {
         margin: 0;
         padding: 0;
@@ -68,29 +70,70 @@ a {
         height: auto;
     }
     .me {
+        min-height: 100vh;
+        /*background-color: aqua;*/
+        margin: 0 auto;
         width: 50%;
-        margin: 20px;
-        height: auto;
-        min-width: 450px;
-        justify-content: center;
+        max-width: 1300px;
+        
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap:wrap;
+        align-content: center; /* this was what I was looking for!!!!*/
+        align-items: center;
+
     }
     .projects {
+        margin-top: 0;
         padding: 0;
         width: 90%;
-        margin: 20px;
         min-height: 100vh;
         min-width: 450px;
         text-align: center;
         max-width: 700px;
         justify-content: center;
+
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap:wrap;
+        align-content: center; /* this was what I was looking for!!!!*/
+        align-items: center;
     }
     .portfolio {
         justify-content: center;
+        min-height: 600px;
     }
     .app-box {
         margin: 10px !important;
     }
+}
 
+@media screen and (max-width:813px) {
+    .projects {
+        padding: 0;
+        width: 90%;
+        min-height: 136vh;
+        min-width: 450px;
+        text-align: center;
+        max-width: 700px;
+        justify-content: center;
+
+        flex-wrap: wrap;
+        align-content: flex-start;
+        align-items: baseline;
+    }
+    .portfolio {
+        min-height: 1180px;
+    }
+}
+
+@media screen and (max-width:620px) {
+    .me, .projects {
+        min-width: 450px;
+    }
+    .portfolio {
+        min-height: 1180px;
+    }
 }
 
 /* Bio */
@@ -120,14 +163,15 @@ h3, p {
     justify-content: space-between;
     align-items: center;
     width: 300px;
+    margin-left: 2px;
 }
 
 .titles {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .aboutme p {
-    margin-bottom: 27px;
+    margin-bottom: 25px;
 }
 
 .languages {
@@ -136,9 +180,9 @@ h3, p {
 
 /* Projects */
 .portfolio {
-    background-color: blueviolet;
+    /*background-color: blueviolet;*/
     padding: 0.5rem 0;
-    height: 500px;
+    height: 550px;
     
     /* Flexbox */
     display: flex;
@@ -147,7 +191,7 @@ h3, p {
 }
 
 .app-box {
-    background-color: aqua;
+    /*background-color: aqua;*/
     width: 41%;
     height: 175px;
     min-width: 300px;
@@ -167,7 +211,7 @@ h3, p {
 .card-text {
     display: flex;
     justify-content: space-between;
-    padding: 0 0.5rem;
+    padding: 0.2rem 0.5rem;
 }
 
 .app-name {
