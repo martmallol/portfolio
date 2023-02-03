@@ -255,20 +255,25 @@ h3, p {
 
 @media screen and (max-width:450px) {
     .me, .projects {
-        min-width: 320px;
+        min-width: 300px;
     }
     .portfolio {
         min-height: 1180px;
     }
+
+
     h1 {
-        font-size: 53px;
+        font-size: 43px;
     }
-        
+
     h2 {
-        font-size: 40px;    
+        font-size: 30px;    
     }
-    
+
     h3, p {
         font-size: 17px;
     }
+    .links {
+        margin-top: 0.5rem;
+    }   
 }
