@@ -198,23 +198,53 @@ h3, p {
     border-radius: 5px;
     border: 1px solid black;
     cursor: pointer;
+    z-index: 1;
+}
+
+.overlay {
+    width: 100%;
+    height: 80%;
+    background-color: #FD2256; /* the color every image will take on hover*/
 }
 
 .app-box img {
+    /* Now every image covers 100% of its parent (the div w/ 'overlay' class)*/
     width: 100%;
-    height: 80%;
+    height: 100%;
     object-fit: cover;
     border-bottom: 1px solid black;
+    
 }
 
 .card-text {
     display: flex;
     justify-content: space-between;
     padding: 0.2rem 0.5rem;
+    padding-top: 0.5rem;
 }
 
 .app-name {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.app-box:hover img{
+    filter: grayscale(100%);
+    mix-blend-mode: multiply;
+    mix-blend-mode: luminosity;
+    border-bottom: none;
+}
+
+.app-box:hover {
+    border: 1px solid #FD2256;
+}
+
+.app-box:hover .overlay {
+    border-bottom: 1px solid #FD2256;
+}
+
+.app-box:hover .card-text {
+    padding-top: 0.45rem;
+    color: #FD2256;
 }
