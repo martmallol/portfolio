@@ -177,6 +177,10 @@ h3, p {
     color: #FD2256;
 }
 
+.links a:hover{
+    color: #FD2256;
+}
+
 /* Projects */
 .portfolio {
     /*background-color: blueviolet;*/
