@@ -147,8 +147,9 @@ html, body {
 	align-items: flex-start;
 	justify-content: center;
 	min-height: 0;
-	/* gap between MARTIN MALLOL and the projects */
-	margin-top: 22px;
+	/* breathing room above (below MARTIN MALLOL) and below (above the footer) */
+	margin-top: clamp(30px, 4.5vh, 60px);
+	margin-bottom: clamp(24px, 3.5vh, 48px);
 }
 
 .cardwrap {
@@ -351,6 +352,10 @@ html, body {
 	}
 
 	.nav { flex-wrap: wrap; gap: 6px 14px; }
+
+	/* hide the brand block (MARTIN MALLOL / BUENOS AIRES, AR) on phones —
+	   the big decorative name already carries it */
+	.brand { display: none; }
 
 	.name { margin: 2px 0 0; }
 
