@@ -83,7 +83,26 @@
 		grid.style.gridAutoRows = cell + 'px';
 	}
 
-	function layout() { fitName(); fitCards(); }
+	/* "BUENOS AIRES, AR" stretches (via letter-spacing) to span exactly the
+	   same width as "MARTIN MALLOL" above it in the navbar brand block. */
+	function fitBrandLoc() {
+		var nameEl = document.querySelector('.brand-name');
+		var locEl = document.querySelector('.brand-loc');
+		if (!nameEl || !locEl) return;
+
+		var target = nameEl.getBoundingClientRect().width;
+		var text = locEl.textContent;
+		if (target <= 0 || !text) return;
+
+		locEl.style.letterSpacing = '0px';
+		var natural = locEl.getBoundingClientRect().width;
+		if (natural <= 0) return;
+
+		var extra = (target - natural) / text.length;
+		locEl.style.letterSpacing = extra + 'px';
+	}
+
+	function layout() { fitName(); fitCards(); fitBrandLoc(); }
 
 	/* footer copyright year — always the current year, no manual updates */
 	function setYear() {
