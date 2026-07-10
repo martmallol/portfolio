@@ -16,3 +16,28 @@ https://coolshap.es/
 https://kael-donovan.vercel.app/
 
 ![Kael Donovan](screenshots/kael-donovan.png)
+
+## Mokkap
+https://www.mokkap.com/
+
+![Mokkap](screenshots/mokkap.png)
+
+## Funkhaus
+https://funkhaus.io/en
+
+![Funkhaus](screenshots/funkhaus.png)
+
+## Rejouice
+https://www.rejouice.com/
+
+![Rejouice](screenshots/rejouice.png)
+
+## Daniel Sun
+https://danielsun.space/
+
+![Daniel Sun](screenshots/danielsun.png)
+
+## 3D Type Sphere (Deeo Studio)
+https://artifacts.deeo.studio/3d-type-sphere
+
+![3D Type Sphere](screenshots/3d-type-sphere.png)
