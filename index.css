@@ -29,7 +29,7 @@ html, body {
 	margin: 0;
 	height: 100%;
 	overflow: hidden;
-	background: #08080a;
+	background: #0a0a0b;
 }
 
 .root {
@@ -37,8 +37,8 @@ html, body {
 	height: 100vh;
 	height: 100dvh;
 	width: 100vw;
-	background: #06070c;
-	color: #f4f4f5;
+	background: #0a0a0b;
+	color: #f0efec;
 	font-family: 'SK Modernist', system-ui, sans-serif;
 	display: flex;
 	flex-direction: column;
@@ -46,29 +46,19 @@ html, body {
 	overflow: hidden;
 }
 
-/* Background image lives here so it can be blurred without touching the content.
-   Slightly scaled up so the blur doesn't reveal soft edges. */
-.root::before {
-	content: '';
-	position: absolute;
-	inset: -24px;
-	background: url('public/img/cosmos.jpg') center/cover no-repeat;
-	filter: blur(3px);
-	transform: scale(1.04);
-	pointer-events: none;
-	z-index: 0;
-}
+/* ---------- Background motif: scattered crosses ---------- */
 
-.veil {
+.bg-crosses {
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg,
-		rgba(4,4,8,0.58) 0%,
-		rgba(4,4,8,0.34) 32%,
-		rgba(4,4,8,0.34) 68%,
-		rgba(4,4,8,0.58) 100%);
 	pointer-events: none;
+	z-index: 0;
+	font-family: 'SK Modernist Mono', monospace;
+	font-size: 15px;
+	color: rgba(240,239,236,0.28);
 }
+
+.bg-crosses span { position: absolute; }
 
 /* ---------- Nav ---------- */
 
@@ -101,16 +91,27 @@ html, body {
 	font-weight: 300;
 	font-size: 10px;
 	letter-spacing: 0.2em;
-	color: rgba(244,244,245,0.5);
+	color: rgba(240,239,236,0.5);
 }
 
 .navlink {
 	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: 0.16em;
-	color: rgba(244,244,245,0.62);
+	color: rgba(240,239,236,0.62);
 	text-decoration: none;
+	text-align: center;
 	transition: color .2s;
+}
+/* Invisible bold copy reserves the bold width so the layout
+   doesn't shift when the visible text turns bold on hover */
+.navlink::after {
+	content: attr(data-text);
+	display: block;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	font-weight: 700;
 }
 .navlink:hover {
 	color: #fafafa;
@@ -126,7 +127,7 @@ html, body {
 	font-weight: 700;
 	font-size: 12vw; /* fallback; JS fits it to the exact available width */
 	line-height: 0.9;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.035em;
 	white-space: nowrap;
 	display: block;
 	width: 100%;
@@ -137,6 +138,50 @@ html, body {
 	color: #fafafa;
 }
 
+.name-it {
+	font-family: 'Instrument Serif', Georgia, serif;
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	display: inline-block;
+	transform: skewX(-12deg);
+}
+
+/* The animated gradient "O" */
+
+@property --ga { syntax: '<angle>'; initial-value: 220deg; inherits: false; }
+@property --g1 { syntax: '<percentage>'; initial-value: 25%; inherits: false; }
+@property --g2 { syntax: '<percentage>'; initial-value: 50%; inherits: false; }
+@property --g3 { syntax: '<percentage>'; initial-value: 75%; inherits: false; }
+
+@keyframes o-shift {
+	0%, 100% { --ga: 220deg; --g1: 25%; --g2: 50%; --g3: 75%; }
+	25%      { --ga: 310deg; --g1: 42%; --g2: 56%; --g3: 82%; }
+	50%      { --ga: 400deg; --g1: 16%; --g2: 62%; --g3: 72%; }
+	75%      { --ga: 490deg; --g1: 30%; --g2: 40%; --g3: 86%; }
+}
+
+.o {
+	display: inline-block;
+	width: 0.72em;
+	height: 0.72em;
+	margin: 0 0.015em;
+	border-radius: 50%;
+	overflow: hidden;
+	vertical-align: 0;
+	position: relative;
+}
+
+.o-spin {
+	position: absolute;
+	inset: -30%;
+	background: conic-gradient(from var(--ga, 220deg),
+		#FF4D00 0%, #D9FF3F var(--g1, 25%), #00E5A0 var(--g2, 50%),
+		#5B8CFF var(--g3, 75%), #FF4D00 100%);
+	filter: blur(0.1em);
+	animation: o-shift 10s ease-in-out infinite;
+}
+
 /* ---------- Main row / card ---------- */
 
 .mainrow {
@@ -144,7 +189,7 @@ html, body {
 	z-index: 2;
 	flex: 1;
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: center;
 	min-height: 0;
 	/* breathing room above (below MARTIN MALLOL) and below (above the footer) */
@@ -164,14 +209,16 @@ html, body {
 }
 
 .card-label {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
 	font-family: 'SK Modernist Mono', monospace;
 	font-size: 11px;
 	letter-spacing: 0.18em;
-	color: rgba(244,244,245,0.55);
-	padding-left: 2px;
+	color: rgba(240,239,236,0.55);
+	padding: 0 2px;
 }
 
-/* Bare container — the frame/box is gone; glass now lives on each tile */
 .card {
 	position: relative;
 	padding: 0;
@@ -190,27 +237,18 @@ html, body {
 .proj {
 	position: relative;
 	overflow: hidden;
-	/* Glass morphism (slightly darker) */
-	background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015)),
-		rgba(8,9,14,0.34);
-	backdrop-filter: blur(22px) saturate(160%);
-	-webkit-backdrop-filter: blur(22px) saturate(160%);
-	border: 1px solid rgba(255,255,255,0.18);
-	border-radius: 14px;
-	box-shadow: 0 18px 50px -24px rgba(0,0,0,0.8),
-		inset 0 1px 0 rgba(255,255,255,0.22),
-		inset 0 0 0 1px rgba(255,255,255,0.03);
+	background: #101012;
+	border: 1px solid rgba(255,255,255,0.85);
+	border-radius: 2px;
 	text-decoration: none;
 	display: block;
 	/* size-responsive interior: children scale with the tile */
 	container-type: size;
-	transition: transform .22s, border-color .22s, box-shadow .22s;
+	transition: transform .22s, border-color .22s;
 }
 
 .proj:hover {
-	border-color: color-mix(in srgb, var(--ac) 60%, rgba(255,255,255,0.18));
-	box-shadow: 0 20px 44px -18px color-mix(in srgb, var(--ac) 60%, transparent),
-		inset 0 1px 0 rgba(255,255,255,0.28);
+	border-color: var(--ac);
 }
 
 .def, .desc {
@@ -259,7 +297,7 @@ html, body {
 	font-family: 'SK Modernist Mono', monospace;
 	font-size: clamp(9px, 6cqmin, 15px);
 	line-height: 1;
-	color: rgba(244,244,245,0.85);
+	color: rgba(240,239,236,0.85);
 }
 
 .stars svg {
@@ -280,7 +318,7 @@ html, body {
 	font-family: 'SK Modernist Mono', monospace;
 	font-size: clamp(9px, 5.5cqmin, 14px);
 	letter-spacing: 0.04em;
-	color: rgba(244,244,245,0.4);
+	color: rgba(240,239,236,0.4);
 	margin-top: clamp(4px, 3cqmin, 9px);
 }
 
@@ -295,13 +333,13 @@ html, body {
 	margin: 0;
 	font-size: clamp(11px, 7cqmin, 18px);
 	line-height: 1.4;
-	color: rgba(244,244,245,0.92);
+	color: rgba(240,239,236,0.92);
 }
 
+/* accent square */
 .dot {
 	width: clamp(8px, 5cqmin, 13px);
 	height: clamp(8px, 5cqmin, 13px);
-	border-radius: 50%;
 	background: var(--ac);
 	flex: none;
 }
@@ -327,17 +365,17 @@ html, body {
 	font-family: 'SK Modernist Mono', monospace;
 	font-size: 11px;
 	letter-spacing: 0.1em;
-	color: rgba(244,244,245,0.4);
+	color: rgba(240,239,236,0.4);
 }
 
 .footer a {
-	color: rgba(244,244,245,0.55);
+	color: rgba(240,239,236,0.55);
 	text-decoration: none;
 	transition: color .2s;
 }
 .footer a:hover { color: #fafafa; }
 
-/* ---------- Mobile: single column of squares ---------- */
+/* ---------- Mobile: 2-column grid of squares ---------- */
 
 @media (max-width: 640px) {
 	html, body { overflow: auto; height: auto; }
@@ -362,22 +400,16 @@ html, body {
 	.mainrow { flex: none; margin-top: 20px; }
 
 	.cardwrap { width: 100%; }
-	.card { width: 100%; padding: 12px; }
+	.card { width: 100%; }
 
 	.cards {
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr 1fr;
 		grid-auto-rows: auto;
-		gap: 16px;
+		gap: 10px;
 		perspective: none;
 	}
 
-	/* smaller, more breathable cards on phones (no longer full-height squares) */
-	.cards .proj { aspect-ratio: auto; height: 130px; }
-
-	.def, .desc { padding: 16px; }
-	.desc p { font-size: 12.5px; }
-	.pt { font-size: 15px; }
-	.ptech { font-size: 10px; }
+	.cards .proj { aspect-ratio: 1 / 1; }
 
 	/* pin the footer to the bottom of the page on mobile, with air above it */
 	.footer { margin-top: auto; padding-top: 32px; }

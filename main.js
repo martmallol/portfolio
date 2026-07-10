@@ -31,8 +31,8 @@
 	}
 
 	/*
-	 * Project grid (4 projects). Cards are always SQUARE and grow to use as much
-	 * page width as possible.
+	 * Project grid (4 projects). Cards are always SQUARE and grow with the page,
+	 * capped at 190px so the grid stays a compact centered block.
 	 *  - desktop, wide: a single horizontal row of 4
 	 *  - desktop, tall/narrow (not mobile): a 2x2 grid (bigger squares than a row would allow)
 	 *  - mobile (<=640px): a single column (handled by CSS; here we just clear inline styles)
@@ -77,6 +77,7 @@
 		if (gridCell > rowCell) { cols = 2; cell = gridCell; }
 		else { cols = count; cell = rowCell; }
 
+		cell = Math.min(cell, 190);
 		cell = Math.max(cell, 84);
 		grid.style.gridTemplateColumns = 'repeat(' + cols + ', ' + cell + 'px)';
 		grid.style.gridAutoRows = cell + 'px';
