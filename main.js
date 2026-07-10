@@ -85,6 +85,12 @@
 
 	function layout() { fitName(); fitCards(); }
 
+	/* footer copyright year — always the current year, no manual updates */
+	function setYear() {
+		var el = document.getElementById('year');
+		if (el) el.textContent = new Date().getFullYear();
+	}
+
 	/* 3D tilt on the project tiles */
 	function initTilt() {
 		var cards = document.querySelectorAll('.cards > a');
@@ -143,4 +149,5 @@
 	if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 	initTilt();
 	loadStars();
+	setYear();
 })();
