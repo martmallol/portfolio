@@ -53,7 +53,7 @@
 			return;
 		}
 
-		var pad = 16, gap = 14, breathing = 30, gapCwrap = 10;
+		var pad = 0, gap = 14, breathing = 30, gapCwrap = 10; /* .card no longer has padding (frame removed) */
 		var cwrap = card.parentElement;
 		var label = cwrap.querySelector('.card-label');
 		var labelH = label ? label.getBoundingClientRect().height : 0;

@@ -157,15 +157,10 @@ html, body {
 	padding-left: 2px;
 }
 
+/* Bare container — the frame/box is gone; glass now lives on each tile */
 .card {
 	position: relative;
-	background: rgba(14,15,22,0.34);
-	backdrop-filter: blur(24px) saturate(135%);
-	-webkit-backdrop-filter: blur(24px) saturate(135%);
-	border: 1px solid rgba(255,255,255,0.16);
-	border-radius: 10px;
-	padding: 16px;
-	box-shadow: 0 30px 80px -30px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.10);
+	padding: 0;
 }
 
 .cards {
@@ -181,23 +176,33 @@ html, body {
 .proj {
 	position: relative;
 	overflow: hidden;
-	background: rgba(9,10,15,0.40);
-	border: 1px solid rgba(255,255,255,0.11);
-	border-radius: 8px;
+	/* Glass morphism (slightly darker) */
+	background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015)),
+		rgba(8,9,14,0.34);
+	backdrop-filter: blur(22px) saturate(160%);
+	-webkit-backdrop-filter: blur(22px) saturate(160%);
+	border: 1px solid rgba(255,255,255,0.18);
+	border-radius: 14px;
+	box-shadow: 0 18px 50px -24px rgba(0,0,0,0.8),
+		inset 0 1px 0 rgba(255,255,255,0.22),
+		inset 0 0 0 1px rgba(255,255,255,0.03);
 	text-decoration: none;
 	display: block;
+	/* size-responsive interior: children scale with the tile */
+	container-type: size;
 	transition: transform .22s, border-color .22s, box-shadow .22s;
 }
 
 .proj:hover {
-	border-color: color-mix(in srgb, var(--ac) 55%, transparent);
-	box-shadow: 0 14px 30px -14px color-mix(in srgb, var(--ac) 55%, transparent);
+	border-color: color-mix(in srgb, var(--ac) 60%, rgba(255,255,255,0.18));
+	box-shadow: 0 20px 44px -18px color-mix(in srgb, var(--ac) 60%, transparent),
+		inset 0 1px 0 rgba(255,255,255,0.28);
 }
 
 .def, .desc {
 	position: absolute;
 	inset: 0;
-	padding: 14px;
+	padding: clamp(11px, 9cqmin, 26px);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -212,8 +217,8 @@ html, body {
 }
 
 .logo {
-	width: 42px;
-	height: 42px;
+	width: clamp(34px, 24cqmin, 68px);
+	height: clamp(34px, 24cqmin, 68px);
 	flex: none;
 	color: #fafafa; /* inline SVGs use currentColor */
 	display: block;
@@ -229,12 +234,12 @@ html, body {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	gap: 6px;
+	gap: clamp(4px, 3.5cqmin, 9px);
 }
 
 .num {
 	font-family: 'SK Modernist Mono', monospace;
-	font-size: 10px;
+	font-size: clamp(9px, 6cqmin, 15px);
 	color: rgba(244,244,245,0.35);
 }
 
@@ -242,33 +247,33 @@ html, body {
 .stars {
 	display: inline-flex;
 	align-items: center;
-	gap: 4px;
+	gap: clamp(3px, 2.5cqmin, 6px);
 	font-family: 'SK Modernist Mono', monospace;
-	font-size: 10px;
+	font-size: clamp(9px, 6cqmin, 15px);
 	line-height: 1;
 	color: rgba(244,244,245,0.85);
 }
 
 .stars svg {
-	width: 11px;
-	height: 11px;
+	width: clamp(10px, 6.5cqmin, 16px);
+	height: clamp(10px, 6.5cqmin, 16px);
 	fill: var(--ac);
 	flex: none;
 }
 
 .pt {
 	font-weight: 700;
-	font-size: 14px;
+	font-size: clamp(13px, 9cqmin, 24px);
 	line-height: 1.15;
 	color: #fafafa;
 }
 
 .ptech {
 	font-family: 'SK Modernist Mono', monospace;
-	font-size: 9.5px;
+	font-size: clamp(9px, 5.5cqmin, 14px);
 	letter-spacing: 0.04em;
 	color: rgba(244,244,245,0.4);
-	margin-top: 5px;
+	margin-top: clamp(4px, 3cqmin, 9px);
 }
 
 .desc {
@@ -280,14 +285,14 @@ html, body {
 
 .desc p {
 	margin: 0;
-	font-size: 11.5px;
+	font-size: clamp(11px, 7cqmin, 18px);
 	line-height: 1.4;
 	color: rgba(244,244,245,0.92);
 }
 
 .dot {
-	width: 9px;
-	height: 9px;
+	width: clamp(8px, 5cqmin, 13px);
+	height: clamp(8px, 5cqmin, 13px);
 	border-radius: 50%;
 	background: var(--ac);
 	flex: none;
@@ -295,7 +300,7 @@ html, body {
 
 .view {
 	font-family: 'SK Modernist Mono', monospace;
-	font-size: 9px;
+	font-size: clamp(9px, 5.5cqmin, 14px);
 	letter-spacing: 0.1em;
 	color: var(--ac);
 }
