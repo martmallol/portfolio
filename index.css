@@ -46,6 +46,17 @@ html, body {
 	overflow: hidden;
 }
 
+/* ---------- Background: noise shader gradient (WebGL) ---------- */
+
+.bg-gl {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
+}
+
 /* ---------- Background motif: scattered crosses ---------- */
 
 .bg-crosses {
@@ -147,41 +158,6 @@ html, body {
 	transform: skewX(-12deg);
 }
 
-/* The animated gradient "O" */
-
-@property --ga { syntax: '<angle>'; initial-value: 220deg; inherits: false; }
-@property --g1 { syntax: '<percentage>'; initial-value: 25%; inherits: false; }
-@property --g2 { syntax: '<percentage>'; initial-value: 50%; inherits: false; }
-@property --g3 { syntax: '<percentage>'; initial-value: 75%; inherits: false; }
-
-@keyframes o-shift {
-	0%, 100% { --ga: 220deg; --g1: 25%; --g2: 50%; --g3: 75%; }
-	25%      { --ga: 310deg; --g1: 42%; --g2: 56%; --g3: 82%; }
-	50%      { --ga: 400deg; --g1: 16%; --g2: 62%; --g3: 72%; }
-	75%      { --ga: 490deg; --g1: 30%; --g2: 40%; --g3: 86%; }
-}
-
-.o {
-	display: inline-block;
-	width: 0.72em;
-	height: 0.72em;
-	margin: 0 0.015em;
-	border-radius: 50%;
-	overflow: hidden;
-	vertical-align: 0;
-	position: relative;
-}
-
-.o-spin {
-	position: absolute;
-	inset: -30%;
-	background: conic-gradient(from var(--ga, 220deg),
-		#FF4D00 0%, #D9FF3F var(--g1, 25%), #00E5A0 var(--g2, 50%),
-		#5B8CFF var(--g3, 75%), #FF4D00 100%);
-	filter: blur(0.1em);
-	animation: o-shift 10s ease-in-out infinite;
-}
-
 /* ---------- Main row / card ---------- */
 
 .mainrow {
@@ -237,18 +213,27 @@ html, body {
 .proj {
 	position: relative;
 	overflow: hidden;
-	background: #101012;
+	/* all accent details (stars, dot, view text, hover border) render white */
+	--ac: #fafafa;
+	/* glass: lets the animated noise-shader background bleed through,
+	   tinted dark so the white type stays legible */
+	background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.015)),
+		rgba(8,9,14,0.42);
+	backdrop-filter: blur(18px) saturate(160%);
+	-webkit-backdrop-filter: blur(18px) saturate(160%);
 	border: 1px solid rgba(255,255,255,0.85);
 	border-radius: 2px;
 	text-decoration: none;
 	display: block;
 	/* size-responsive interior: children scale with the tile */
 	container-type: size;
-	transition: transform .22s, border-color .22s;
+	transition: transform .22s, border-color .22s, background .22s;
 }
 
 .proj:hover {
-	border-color: var(--ac);
+	border-color: #ffffff;
+	background: linear-gradient(135deg, rgba(255,255,255,0.11), rgba(255,255,255,0.03)),
+		rgba(8,9,14,0.42);
 }
 
 .def, .desc {

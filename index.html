@@ -17,6 +17,8 @@
 
 <div class="root">
 
+	<canvas class="bg-gl" id="bg-gl" aria-hidden="true"></canvas>
+
 	<div class="bg-crosses" aria-hidden="true">
 		<span style="left:6%;top:36%;">+</span>
 		<span style="right:6%;top:36%;">+</span>
@@ -40,7 +42,7 @@
 		<a class="navlink" data-text="CONTACT" href="mailto:martinmallolcc@gmail.com">CONTACT</a>
 	</nav>
 
-	<h1 class="name" id="bigname"><span class="name-it">Martin</span> MALL<span class="o"><span class="o-spin"></span></span>L</h1>
+	<h1 class="name" id="bigname"><span class="name-it">Martin</span> MALLOL</h1>
 
 	<div class="mainrow" id="mainrow">
 		<div class="cardwrap">
@@ -48,7 +50,7 @@
 			<div class="card" id="card">
 				<div class="cards" id="cards">
 
-					<a class="proj" style="--ac:#FF4D00;" href="https://github.com/martmallol/road-trip-gas-cost" data-repo="martmallol/road-trip-gas-cost" target="_blank" rel="noopener">
+					<a class="proj" href="https://github.com/martmallol/road-trip-gas-cost" data-repo="martmallol/road-trip-gas-cost" target="_blank" rel="noopener">
 						<div class="def">
 							<div class="def-top">
 								<svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Fuel Cost Calculator">
@@ -73,7 +75,7 @@
 						</div>
 					</a>
 
-					<a class="proj" style="--ac:#D9FF3F;" href="https://github.com/martmallol/jojos-quiz-game" data-repo="martmallol/jojos-quiz-game" target="_blank" rel="noopener">
+					<a class="proj" href="https://github.com/martmallol/jojos-quiz-game" data-repo="martmallol/jojos-quiz-game" target="_blank" rel="noopener">
 						<div class="def">
 							<div class="def-top">
 								<img class="logo logo-img" src="public/logos/jojo logo.png" alt="Jojo's Quiz Game">
@@ -93,7 +95,7 @@
 						</div>
 					</a>
 
-					<a class="proj" style="--ac:#5B8CFF;" href="https://github.com/martmallol/tp-so" data-repo="martmallol/tp-so" target="_blank" rel="noopener">
+					<a class="proj" href="https://github.com/martmallol/tp-so" data-repo="martmallol/tp-so" target="_blank" rel="noopener">
 						<div class="def">
 							<div class="def-top">
 								<svg class="logo" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Capture the Flag">
@@ -115,7 +117,7 @@
 						</div>
 					</a>
 
-					<a class="proj" style="--ac:#00E5A0;" href="https://github.com/martmallol/nm-digit-recognition" data-repo="martmallol/nm-digit-recognition" target="_blank" rel="noopener">
+					<a class="proj" href="https://github.com/martmallol/nm-digit-recognition" data-repo="martmallol/nm-digit-recognition" target="_blank" rel="noopener">
 						<div class="def">
 							<div class="def-top">
 								<svg class="logo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Digit Recognition">
@@ -151,6 +153,7 @@
 
 </div>
 
+<script src="bg-shader.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
