@@ -1,262 +1,371 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+* { box-sizing: border-box; }
 
-/* Large divs */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    list-style: none;
-    background-color: #FFCFDB;
+html, body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	background: #0a0a0b;
 }
 
-a {
-    color: black;
-    text-decoration: none; 
+.root {
+	position: relative;
+	height: 100vh;
+	height: 100dvh;
+	width: 100vw;
+	background: #0a0a0b;
+	color: #f0efec;
+	font-family: 'Mulish', system-ui, sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding: 26px clamp(24px, 3.4vw, 56px) 22px;
+	overflow: hidden;
 }
 
-.container {
-    /*background-color: red;*/
-    width: 100%;
-    height: auto;
+/* ---------- Background: noise shader gradient (WebGL) ---------- */
+
+.bg-gl {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
 }
 
-.box {
-    /*background-color: lightblue;*/
-    width: 100%;
-    height: 770px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-    
-    /* flexbox */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: wrap;
+/* ---------- Background motif: scattered crosses ---------- */
+
+.bg-crosses {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-size: 15px;
+	color: rgba(240,239,236,0.28);
 }
 
-.me, .projects {
-    
-    /*background-color: yellow;*/
-    margin: 0 20px;
-    box-sizing: border-box;
-    position: relative;
+.bg-crosses span { position: absolute; }
+
+/* ---------- Nav ---------- */
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	z-index: 10; /* stay above the big decorative name so links stay clickable */
+	font-family: 'Mulish', system-ui, sans-serif;
 }
 
-.me {
-    width: 30%;
-    min-width: 550px;
-    max-width: 650px;
-    max-height: 1000px;
+.brand {
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; /* natural (shrink-to-fit) widths, needed so JS can measure and match them */
+	gap: 3px;
+	line-height: 1;
 }
 
-.projects {
-    margin-top: 0.9rem; /*'Martin' & 'My projects' alignment*/
-    width: 50%;
-    padding-top: 71px;
-    min-width: 630px;
+.brand-name {
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	letter-spacing: 0.05em;
+	color: #fafafa;
 }
 
-@media screen and (max-width:1430px) {
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    .box{
-        height: auto;
-    }
-    .me {
-        min-height: 100vh;
-        /*background-color: aqua;*/
-        margin: 0 auto;
-        width: 50%;
-        max-width: 1300px;
-        
-        display: flex;
-        flex-wrap:wrap;
-        align-content: center; /* this was what I was looking for!!!!*/
-        align-items: center;
-
-    }
-    .projects {
-        margin-top: 0;
-        padding: 0;
-        width: 90%;
-        min-height: 100vh;
-        min-width: 450px;
-        text-align: center;
-        max-width: 900px;
-        justify-content: center;
-
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap:wrap;
-        align-content: center; /* this was what I was looking for!!!!*/
-        align-items: center;
-    }
-    .portfolio {
-        justify-content: center;
-        min-height: 600px;
-    }
-    .app-box {
-        margin: 10px !important;
-        width: 300px !important;
-    }
+.brand-loc {
+	font-weight: 300;
+	font-size: 10px;
+	letter-spacing: 0.2em;
+	color: rgba(240,239,236,0.5);
 }
 
-/* Bio */
-h1 {
-    font-size: 63px;
+.navlink {
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: 0.16em;
+	color: rgba(240,239,236,0.62);
+	text-decoration: none;
+	text-align: center;
+	transition: color .2s;
+}
+/* Invisible bold copy reserves the bold width so the layout
+   doesn't shift when the visible text turns bold on hover */
+.navlink::after {
+	content: attr(data-text);
+	display: block;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	font-weight: 700;
+}
+.navlink:hover {
+	color: #fafafa;
+	font-weight: 700;
 }
 
-.myname {
-    font-weight: bold;
-    color: #FD2256;
+/* ---------- Big name ---------- */
+
+.name {
+	/* less breathing room against the navbar */
+	margin: 2px 0 0;
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-weight: 700;
+	font-size: 12vw; /* fallback; JS fits it to the exact available width */
+	line-height: 0.9;
+	letter-spacing: -0.035em;
+	white-space: nowrap;
+	display: block;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	user-select: none;
+	pointer-events: none; /* decorative — must not steal clicks from the nav above it */
+	color: #fafafa;
 }
 
-h2 {
-    font-size: 50px;    
+.name-it {
+	font-family: 'Instrument Serif', Georgia, serif;
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	display: inline-block;
+	transform: skewX(-12deg);
 }
 
-h3, p {
-    font-size: 27px;
+/* ---------- Main row / card ---------- */
+
+.mainrow {
+	position: relative;
+	z-index: 2;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 0;
+	/* breathing room above (below MARTIN MALLOL) and below (above the footer) */
+	margin-top: clamp(30px, 4.5vh, 60px);
+	margin-bottom: clamp(24px, 3.5vh, 48px);
 }
 
-.hi, h1 {
-    font-weight: normal;
+.cardwrap {
+	position: relative;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	gap: 10px;
+	max-width: 100%;
 }
 
-.links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 300px;
-    margin-left: 2px;
+.card-label {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-size: 11px;
+	letter-spacing: 0.18em;
+	color: rgba(240,239,236,0.55);
+	padding: 0 2px;
 }
 
-.titles {
-    margin-bottom: 25px;
+.card {
+	position: relative;
+	padding: 0;
 }
 
-.aboutme p {
-    margin-bottom: 25px;
+.cards {
+	display: grid;
+	grid-template-columns: repeat(4, clamp(92px, 13.5vh, 142px));
+	grid-auto-rows: clamp(92px, 13.5vh, 142px);
+	gap: 14px;
+	perspective: 900px;
 }
 
-.languages {
-    color: #FD2256;
+/* ---------- Project tiles ---------- */
+
+.proj {
+	position: relative;
+	overflow: hidden;
+	/* all accent details (stars, dot, view text, hover border) render white */
+	--ac: #fafafa;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255,255,255,0.85);
+	border-radius: 2px;
+	text-decoration: none;
+	display: block;
+	/* size-responsive interior: children scale with the tile */
+	container-type: size;
+	transition: transform .22s, border-color .22s, background .22s;
 }
 
-.links a:hover{
-    color: #FD2256;
+.proj:hover {
+	border-color: #ffffff;
+	/* background: #16161a; */
 }
 
-/* Projects */
-.portfolio {
-    /*background-color: blueviolet;*/
-    padding: 0.5rem 0;
-    height: 550px;
-    
-    /* Flexbox */
-    display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
+.def, .desc {
+	position: absolute;
+	inset: 0;
+	padding: clamp(11px, 9cqmin, 26px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.app-box {
-    /*background-color: aqua;*/
-    width: 31%;
-    height: 175px;
-    min-width: 100px;
-    margin: 4px;
-    border-radius: 5px;
-    border: 1px solid black;
-    cursor: pointer;
-    z-index: 1;
+.def { transition: opacity .28s ease, transform .28s ease; }
+
+.def-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
-.overlay {
-    width: 100%;
-    height: 80%;
-    background-color: #FD2256; /* the color every image will take on hover*/
+.logo {
+	width: clamp(34px, 24cqmin, 68px);
+	height: clamp(34px, 24cqmin, 68px);
+	flex: none;
+	color: #fafafa; /* inline SVGs use currentColor */
+	display: block;
 }
 
-.app-box img {
-    /* Now every image covers 100% of its parent (the div w/ 'overlay' class)*/
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-bottom: 1px solid black;
-    
+/* Raster logo (PNG): render white so it matches the inline SVGs */
+.logo-img {
+	object-fit: contain;
+	filter: brightness(0) invert(1);
 }
 
-.card-text {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.2rem 0.5rem;
-    padding-top: 0.5rem;
+.meta {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: clamp(4px, 3.5cqmin, 9px);
 }
 
-.app-name {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+/* GitHub star badge */
+.stars {
+	display: inline-flex;
+	align-items: center;
+	gap: clamp(3px, 2.5cqmin, 6px);
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-size: clamp(9px, 6cqmin, 15px);
+	line-height: 1;
+	color: rgba(240,239,236,0.85);
 }
 
-.app-box:hover img{
-    filter: grayscale(100%);
-    mix-blend-mode: multiply;
-    mix-blend-mode: luminosity;
-    border-bottom: none;
+.stars svg {
+	width: clamp(10px, 6.5cqmin, 16px);
+	height: clamp(10px, 6.5cqmin, 16px);
+	fill: var(--ac);
+	flex: none;
 }
 
-.app-box:hover {
-    border: 1px solid #FD2256;
+.pt {
+	font-weight: 700;
+	font-size: clamp(13px, 9cqmin, 24px);
+	line-height: 1.15;
+	color: #fafafa;
 }
 
-.app-box:hover .overlay {
-    border-bottom: 1px solid #FD2256;
+.ptech {
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-size: clamp(9px, 5.5cqmin, 14px);
+	letter-spacing: 0.04em;
+	color: rgba(240,239,236,0.4);
+	margin-top: clamp(4px, 3cqmin, 9px);
 }
 
-.app-box:hover .card-text {
-    padding-top: 0.45rem;
-    color: #FD2256;
+.desc {
+	opacity: 0;
+	transform: translateY(10px);
+	transition: opacity .3s ease, transform .3s ease;
+	pointer-events: none;
 }
 
-
-@media screen and (max-width:620px) {
-    .me, .projects {
-        min-width: 450px;
-    }
-    .portfolio {
-        min-height: 1180px;
-    }
+.desc p {
+	margin: 0;
+	font-size: clamp(11px, 7cqmin, 18px);
+	line-height: 1.4;
+	color: rgba(240,239,236,0.92);
 }
 
-@media screen and (max-width:450px) {
-    .me, .projects {
-        min-width: 300px;
-    }
-    .portfolio {
-        min-height: 1180px;
-    }
+/* accent square */
+.dot {
+	width: clamp(8px, 5cqmin, 13px);
+	height: clamp(8px, 5cqmin, 13px);
+	background: var(--ac);
+	flex: none;
+}
 
+.view {
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-size: clamp(9px, 5.5cqmin, 14px);
+	letter-spacing: 0.1em;
+	color: var(--ac);
+}
 
-    h1 {
-        font-size: 43px;
-    }
+.proj:hover .def { opacity: 0; transform: translateY(-8px); }
+.proj:hover .desc { opacity: 1; transform: translateY(0); }
 
-    h2 {
-        font-size: 30px;    
-    }
+/* ---------- Footer ---------- */
 
-    h3, p {
-        font-size: 17px;
-    }
-    .links {
-        margin-top: 0.5rem;
-    }   
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	z-index: 3;
+	font-family: 'Mulish', system-ui, sans-serif;
+	font-size: 11px;
+	letter-spacing: 0.1em;
+	color: rgba(240,239,236,0.4);
+}
+
+.footer a {
+	color: rgba(240,239,236,0.55);
+	text-decoration: none;
+	transition: color .2s;
+}
+.footer a:hover { color: #fafafa; }
+
+/* ---------- Mobile: 2-column grid of squares ---------- */
+
+@media (max-width: 640px) {
+	html, body { overflow: auto; height: auto; }
+
+	.root {
+		height: auto;
+		min-height: 100dvh;
+		overflow: visible;
+		padding: 18px 16px 24px;
+		justify-content: flex-start;
+		gap: 10px;
+	}
+
+	.nav { flex-wrap: wrap; gap: 6px 14px; }
+
+	/* hide the brand block (MARTIN MALLOL / BUENOS AIRES, AR) on phones —
+	   the big decorative name already carries it */
+	.brand { display: none; }
+
+	.name { margin: 2px 0 0; }
+
+	.mainrow { flex: none; margin-top: 20px; }
+
+	.cardwrap { width: 100%; }
+	.card { width: 100%; }
+
+	.cards {
+		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: auto;
+		gap: 10px;
+		perspective: none;
+	}
+
+	.cards .proj { aspect-ratio: 1 / 1; }
+
+	/* pin the footer to the bottom of the page on mobile, with air above it */
+	.footer { margin-top: auto; padding-top: 32px; }
 }

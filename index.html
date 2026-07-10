@@ -1,158 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, user-scalable=no">
-		<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-	  	<title>Martin Mallol</title>
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Martin Mallol</title>
+	<meta name="description" content="Martin Mallol — Portfolio. Computer Science student & developer based in Buenos Aires, AR.">
+	<link rel="icon" type="image/png" href="public/img/favicon-m.png">
+	<link rel="apple-touch-icon" href="public/img/favicon-m.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap">
+	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
 
-	<body>
-		<main class="container">
-			<div class="box">
-				<div class="me">
-					<div class="titles">
-						<h2 class="hi">Hi!</h2>
-						<h1>I'm <span class="myname">Martin Mallol</span></h1>
-						<h2>Full Stack Developer</h2>
-						<ul class="links">                            
-							<li>
-								<a href="https://github.com/martmallol" alt="Github" target="_blank" rel="noopener noreferrer" >
-									<i class="fab fa-github-alt fa-lg "></i>
-								</a>
-							</li>
-							<li>
-								<a href="https://www.linkedin.com/in/martin-mallol/" alt="Linkedin" target="_blank" rel="noopener noreferrer" >
-									<i class="fab fa-linkedin-in fa-lg"></i>
-								</a>
-							</li>
-							<li>
-								<a href="public/cv.pdf" title="mallol-cv" download>
-									<i class=" far fa-regular fa-id-card fa-lg"></i>
-								</a>
-							</li>							
-							<li>
-								<a href="mailto:martinmallolcc@gmail.com" alt="">
-									<i class="far fa-solid fa-envelope fa-lg"></i>
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="aboutme">
-						<h3>About me</h3>
-						<p>I’m a Computer Science student at the University of Buenos Aires. 
-							Currently, I’m also studying Web Development & Machine Learning on my own. </p>
-						<p>I’ve gained knowledge on many areas, such as FrontEnd, BackEnd, 
-							Algorithms & Data Structures, Operating Systems and Testing.</p>
-					</div>
+<div class="root">
 
-					<div class="technologies">
-						<h3>Technologies</h3>
-						<h3><span class="languages">JAVASCRIPT</span> • <span class="languages">REACT JS</span> • <span class="languages">NODE JS</span>
-							 • <span class="languages">HTML</span> • <span class="languages">CSS</span> • <span class="languages">C++</span> • <span class="languages">PYTHON</span> • <span class="languages">GIT</span></h3>
-					</div>
-				</div>
-				<div class="projects">
-					<h2>My projects</h2>
-					<div class="portfolio">
-						<div class="app-box">
-							<a href="https://github.com/martmallol/road-trip-gas-cost">
-								<div class="overlay">
-									<img src="./public/img/roadtrip.jpg"/>
-								</div>
-								
-								<div class="card-text">
-									<span class="app-name" title="Roadtrip Fuel Cost Calculator">Roadtrip Fuel Cost Calculator</span><span>></span>
-								</div>
-							</a>
+	<canvas class="bg-gl" id="bg-gl" aria-hidden="true"></canvas>
+
+	<div class="bg-crosses" aria-hidden="true">
+		<span style="left:6%;top:36%;">+</span>
+		<span style="right:6%;top:36%;">+</span>
+		<span style="left:12%;top:72%;">+</span>
+		<span style="right:12%;top:72%;">+</span>
+		<span style="left:50%;top:88%;">+</span>
+		<span style="left:8%;top:54%;">+</span>
+		<span style="right:8%;top:54%;">+</span>
+		<span style="left:38%;top:48%;">+</span>
+		<span style="left:65%;top:12%;">+</span>
+		<span style="left:88%;top:16%;">+</span>
+	</div>
+
+	<nav class="nav">
+		<a href="#" class="brand">
+			<span class="brand-name">MARTIN MALLOL</span>
+			<span class="brand-loc">BUENOS AIRES, AR</span>
+		</a>
+		<a class="navlink" data-text="GITHUB" href="https://github.com/martmallol" target="_blank" rel="noopener">GITHUB</a>
+		<a class="navlink" data-text="LINKEDIN" href="https://www.linkedin.com/in/martin-mallol" target="_blank" rel="noopener">LINKEDIN</a>
+		<a class="navlink" data-text="CONTACT" href="mailto:martinmallolcc@gmail.com">CONTACT</a>
+	</nav>
+
+	<h1 class="name" id="bigname"><span class="name-it">Martin</span> MALLOL</h1>
+
+	<div class="mainrow" id="mainrow">
+		<div class="cardwrap">
+			<div class="card-label"><span>SELECTED WORK</span><span>— 04</span></div>
+			<div class="card" id="card">
+				<div class="cards" id="cards">
+
+					<a class="proj" href="https://github.com/martmallol/road-trip-gas-cost" data-repo="martmallol/road-trip-gas-cost" target="_blank" rel="noopener">
+						<div class="def">
+							<div class="def-top">
+								<svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Fuel Cost Calculator">
+									<path d="M4 5C4 4.44772 4.44772 4 5 4H12C12.5523 4 13 4.44772 13 5V21H4V5Z"/>
+									<path d="M13 11.5H18V19C18 20.1046 18.8954 21 20 21C21.1046 21 22 20.1046 22 19V9M17.5 2L20.5 4.66667M20.5 4.66667L22 6V9M20.5 4.66667V9H22"/>
+									<path d="M15 21L2 21"/>
+									<path d="M10 8L7 8"/>
+								</svg>
+								<span class="meta">
+									<span class="stars" data-stars><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><span class="stars-n">0</span></span>
+								</span>
+							</div>
+							<div>
+								<div class="pt">Fuel Cost<br>Calculator</div>
+								<div class="ptech">REACT · API</div>
+							</div>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/million-dollar-ideas">
-								<div class="overlay">
-									<img src="./public/img/million-dollar.png"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="My Multi-Million Dollar Ideas">My Multi-Million Dollar Ideas</span><span>></span>
-								</div>
-							</a>
+						<div class="desc">
+							<span class="dot"></span>
+							<p>Calculates the fuel cost of a trip based on distance, consumption and fuel price.</p>
+							<span class="view">VIEW PROJECT ↗</span>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/jojos-quiz-game">
-								<div class="overlay">
-									<img src="./public/img/jojos.jpg"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Jojo's Quiz Game">Jojo's Quiz Game</span><span>></span>
-								</div>
-							</a>
+					</a>
+
+					<a class="proj" href="https://github.com/martmallol/jojos-quiz-game" data-repo="martmallol/jojos-quiz-game" target="_blank" rel="noopener">
+						<div class="def">
+							<div class="def-top">
+								<img class="logo logo-img" src="public/logos/jojo logo.png" alt="Jojo's Quiz Game">
+								<span class="meta">
+									<span class="stars" data-stars><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><span class="stars-n">0</span></span>
+								</span>
+							</div>
+							<div>
+								<div class="pt">Jojo's<br>Quiz Game</div>
+								<div class="ptech">JS · CANVAS</div>
+							</div>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/code-cademy-page">
-								<div class="overlay">
-									<img src="./public/img/codecademy.jpg"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Codecademy Clone">Codecademy Clone</span><span>></span>
-								</div>
-							</a>
+						<div class="desc">
+							<span class="dot"></span>
+							<p>Interactive trivia with scoring and a timer, questions by rounds and instant feedback.</p>
+							<span class="view">VIEW PROJECT ↗</span>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/tp-so">
-								<div class="overlay">
-									<img src="./public/img/multithread.jpg"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Capture the Flag: Multithread game">Capture the Flag: Multithread game</span><span>></span>
-								</div>
-							</a>
+					</a>
+
+					<a class="proj" href="https://github.com/martmallol/tp-so" data-repo="martmallol/tp-so" target="_blank" rel="noopener">
+						<div class="def">
+							<div class="def-top">
+								<svg class="logo" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Capture the Flag">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M5 1C4.44772 1 4 1.44772 4 2V22C4 22.5523 4.44772 23 5 23C5.55228 23 6 22.5523 6 22V14H19C19.3603 14 19.6927 13.8062 19.8702 13.4927C20.0477 13.1792 20.0429 12.7944 19.8575 12.4855L17.1662 8L19.8575 3.5145C20.0429 3.20556 20.0477 2.82081 19.8702 2.5073C19.6927 2.19379 19.3603 2 19 2L6 2C6 1.44772 5.55228 1 5 1ZM6 4V12H17.2338L15.1425 8.5145C14.9525 8.19781 14.9525 7.80219 15.1425 7.4855L17.2338 4H6Z"/>
+								</svg>
+								<span class="meta">
+									<span class="stars" data-stars><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><span class="stars-n">3</span></span>
+								</span>
+							</div>
+							<div>
+								<div class="pt">Capture<br>the Flag</div>
+								<div class="ptech">C · THREADS</div>
+							</div>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/m8rtin.wd/tree/master/Big%20Projects/Proyecto%204%20-%20Jammming/jammming">
-								<div class="overlay">
-									<img src="./public/img/jammming.jpeg"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Jammming">Jammming</span><span>></span>
-								</div>
-							</a>
+						<div class="desc">
+							<span class="dot"></span>
+							<p>Concurrent simulation in C: multiple threads compete to capture the flag.</p>
+							<span class="view">VIEW PROJECT ↗</span>
 						</div>
-						<!-- Machine Learning DLC-->
-						<div class="app-box">
-							<a href="https://github.com/martmallol/nm-digit-recognition">
-								<div class="overlay">
-									<img src="./public/img/digits.jpeg"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Digit Recognition">Digit Recognition</span><span>></span>
-								</div>
-							</a>
+					</a>
+
+					<a class="proj" href="https://github.com/martmallol/nm-digit-recognition" data-repo="martmallol/nm-digit-recognition" target="_blank" rel="noopener">
+						<div class="def">
+							<div class="def-top">
+								<svg class="logo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Digit Recognition">
+									<rect height="4.5" width="3" y="1.75" x="3.25"/>
+									<path d="m9.75 6.25h3m-3-4.5h1.5v4"/>
+									<rect height="4.5" width="3" y="9.75" x="9.75"/>
+									<path d="m3.25 14.25h3m-3-4.5h1.5v4"/>
+								</svg>
+								<span class="meta">
+									<span class="stars" data-stars><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg><span class="stars-n">0</span></span>
+								</span>
+							</div>
+							<div>
+								<div class="pt">Digit<br>Recognition</div>
+								<div class="ptech">PYTHON · ML</div>
+							</div>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/nm-life-expectancy">
-								<div class="overlay">
-									<img src="./public/img/lifeexpectancy.png"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Life Expectancy & Linear Regression">Life Expectancy & Linear Regression</span><span>></span>
-								</div>
-							</a>
+						<div class="desc">
+							<span class="dot"></span>
+							<p>Machine learning model in Python that recognizes handwritten digits.</p>
+							<span class="view">VIEW PROJECT ↗</span>
 						</div>
-						<div class="app-box">
-							<a href="https://github.com/martmallol/nm-dimensionality-reduction">
-								<div class="overlay">
-									<img src="./public/img/dimension.png"/>
-								</div>
-								<div class="card-text">
-									<span class="app-name" title="Dimensionality Reduction Techniques">Dimensionality Reduction Techniques</span><span>></span>
-								</div>
-							</a>
-						</div>
-					</div>
+					</a>
+
 				</div>
 			</div>
-		</main>
-	</body>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<span>© <span id="year">2026</span> — ALL RIGHTS RESERVED</span>
+	</footer>
+
+</div>
+
+<script src="bg-shader.js"></script>
+<script src="main.js"></script>
+</body>
 </html>
