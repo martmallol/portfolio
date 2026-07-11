@@ -31,56 +31,16 @@
 	}
 
 	/*
-	 * Project grid (4 projects). Cards are always SQUARE and grow with the page,
-	 * capped at 190px so the grid stays a compact centered block.
-	 *  - desktop, wide: a single horizontal row of 4
-	 *  - desktop, tall/narrow (not mobile): a 2x2 grid (bigger squares than a row would allow)
-	 *  - mobile (<=640px): a single column (handled by CSS; here we just clear inline styles)
-	 * We compute the square size each layout yields and pick whichever is larger.
+	 * Project grid (4 projects). The grid is now full-width (4 equal columns
+	 * spanning the page, like the title) and fills the available height — all
+	 * handled in CSS. Nothing to compute here except clearing any stale inline
+	 * styles left over from older layouts.
 	 */
 	function fitCards() {
 		var grid = document.getElementById('cards');
-		var main = document.getElementById('mainrow');
-		var card = document.getElementById('card');
-		var root = document.querySelector('.root');
-		if (!grid || !main || !card || !root) return;
-
-		var count = grid.children.length;
-
-		if (window.innerWidth <= MOBILE_MAX) {
-			grid.style.gridTemplateColumns = '';
-			grid.style.gridAutoRows = '';
-			return;
-		}
-
-		var pad = 0, gap = 14, breathing = 30, gapCwrap = 10; /* .card no longer has padding (frame removed) */
-		var cwrap = card.parentElement;
-		var label = cwrap.querySelector('.card-label');
-		var labelH = label ? label.getBoundingClientRect().height : 0;
-		var availCardH = main.clientHeight - labelH - gapCwrap - breathing;
-		var cs = getComputedStyle(root);
-		var contentW = root.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-
-		// Square size for an arbitrary cols x rows arrangement, bounded by both
-		// the available width and height of the card container.
-		function squareFor(cols, rows) {
-			var byW = (contentW - (cols - 1) * gap - 2 * pad) / cols;
-			var byH = (availCardH - (rows - 1) * gap - 2 * pad) / rows;
-			return Math.min(byW, byH);
-		}
-
-		// Row of 4 vs 2x2 — take whichever produces the larger square.
-		var rowCell = squareFor(count, 1);
-		var gridCell = squareFor(2, 2);
-
-		var cols, cell;
-		if (gridCell > rowCell) { cols = 2; cell = gridCell; }
-		else { cols = count; cell = rowCell; }
-
-		cell = Math.min(cell, 190);
-		cell = Math.max(cell, 84);
-		grid.style.gridTemplateColumns = 'repeat(' + cols + ', ' + cell + 'px)';
-		grid.style.gridAutoRows = cell + 'px';
+		if (!grid) return;
+		grid.style.gridTemplateColumns = '';
+		grid.style.gridAutoRows = '';
 	}
 
 	/* "BUENOS AIRES, AR" stretches (via letter-spacing) to span exactly the
