@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>404 — Martin Mallol</title>
+	<meta name="description" content="Page not found — Martin Mallol Portfolio.">
+	<meta name="robots" content="noindex">
+	<link rel="icon" type="image/png" href="public/img/favicon.png">
+	<link rel="apple-touch-icon" href="public/img/favicon.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+	<style>
+		/* ---------- 404 page ---------- */
+
+		.notfound {
+			position: relative;
+			z-index: 2;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			min-height: 0;
+			gap: clamp(14px, 2.4vh, 30px);
+		}
+
+		.nf-code {
+			font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+			font-weight: 700;
+			font-size: clamp(120px, 34vw, 460px);
+			line-height: 0.82;
+			letter-spacing: -0.05em;
+			color: #fafafa;
+			margin: 0;
+			user-select: none;
+			pointer-events: none;
+		}
+
+		.nf-copy {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: clamp(6px, 1.2vh, 12px);
+		}
+
+		.nf-title {
+			font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+			font-weight: 300;
+			font-size: clamp(10px, 1.1vw, 13px);
+			letter-spacing: 0.28em;
+			text-transform: uppercase;
+			color: rgba(240,239,236,0.75);
+			margin: 0;
+		}
+
+		.nf-sub {
+			font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+			font-weight: 300;
+			font-size: clamp(9px, 0.95vw, 11px);
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: rgba(240,239,236,0.4);
+			margin: 0;
+			max-width: 40ch;
+			line-height: 1.6;
+		}
+
+		.nf-home {
+			position: relative;
+			margin-top: clamp(6px, 1.2vh, 14px);
+			display: inline-flex;
+			align-items: center;
+			gap: 0.7em;
+			padding: 12px 22px;
+			font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+			font-weight: 400;
+			font-size: 11px;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: rgba(240,239,236,0.85);
+			border: 1px solid rgba(255,255,255,0.85);
+			border-radius: 2px;
+			background: rgba(0,0,0,0.2);
+			transition: color .2s, border-color .2s, background .2s;
+		}
+
+		.nf-home:hover {
+			color: #0a0a0b;
+			background: #fafafa;
+			border-color: #ffffff;
+		}
+
+		.nf-arrow { font-size: 13px; line-height: 1; }
+
+		@media (max-width: 640px) {
+			html, body { overflow: auto; height: auto; }
+
+			.root {
+				height: auto;
+				min-height: 100dvh;
+				overflow: visible;
+				padding: 18px 16px 24px;
+				justify-content: flex-start;
+			}
+
+			.nav { flex-wrap: wrap; gap: 6px 14px; }
+			.brand { display: none; }
+
+			.notfound { flex: 1; margin-top: 8vh; }
+			.footer { margin-top: auto; padding-top: 32px; justify-content: center; }
+		}
+	</style>
+</head>
+<body>
+
+<div class="root">
+
+	<canvas class="bg-gl" id="bg-gl" aria-hidden="true"></canvas>
+
+	<div class="bg-crosses" aria-hidden="true">
+		<span style="left:9%;top:41%;">+</span>
+		<span style="left:70%;top:30%;">+</span>
+		<span style="left:19%;top:78%;">+</span>
+		<span style="left:83%;top:22%;">+</span>
+		<span style="left:44%;top:91%;">+</span>
+		<span style="left:5%;top:80%;">+</span>
+		<span style="left:91%;top:52%;">+</span>
+		<span style="left:34%;top:14%;">+</span>
+		<span style="left:56%;top:36%;">+</span>
+		<span style="left:95%;top:83%;">+</span>
+	</div>
+
+	<nav class="nav">
+		<a href="/" class="brand">
+			<span class="brand-name">MARTIN MALLOL</span>
+			<span class="brand-loc">BUENOS AIRES, AR</span>
+		</a>
+		<a class="navlink" data-text="GITHUB" href="https://github.com/martmallol" target="_blank" rel="noopener">GITHUB</a>
+		<a class="navlink" data-text="LINKEDIN" href="https://www.linkedin.com/in/martin-mallol" target="_blank" rel="noopener">LINKEDIN</a>
+		<a class="navlink" data-text="X" href="https://x.com/martom_dev" target="_blank" rel="noopener">X</a>
+		<a class="navlink" data-text="CONTACT" href="mailto:martinmallolcc@gmail.com">CONTACT</a>
+	</nav>
+
+	<main class="notfound">
+		<h1 class="nf-code">404</h1>
+		<div class="nf-copy">
+			<p class="nf-title">Page not found</p>
+			<p class="nf-sub">The page you're looking for doesn't exist, was moved, or never did.</p>
+		</div>
+		<a class="nf-home" href="/">
+			<span class="nf-arrow">←</span>
+			<span>Back to home</span>
+		</a>
+	</main>
+
+	<footer class="footer">
+		<span>© <span id="year">2026</span> / ALL RIGHTS RESERVED</span>
+	</footer>
+
+</div>
+
+<script src="bg-shader.js"></script>
+<script>
+	document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
