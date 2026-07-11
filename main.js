@@ -31,16 +31,57 @@
 	}
 
 	/*
-	 * Project grid (4 projects). The grid is now full-width (4 equal columns
-	 * spanning the page, like the title) and fills the available height — all
-	 * handled in CSS. Nothing to compute here except clearing any stale inline
-	 * styles left over from older layouts.
+	 * Project grid (4 square projects). We pick between a single full-width row
+	 * of 4 and a centered 2x2 block, choosing whichever yields the larger square
+	 * that still fits the space left below the title/tagline — so as soon as the
+	 * viewport is tall enough for 2x2 squares to be bigger, it switches.
+	 * On phones (<=640px) the CSS handles the 2-column layout; we just clear.
 	 */
 	function fitCards() {
 		var grid = document.getElementById('cards');
-		if (!grid) return;
-		grid.style.gridTemplateColumns = '';
-		grid.style.gridAutoRows = '';
+		var main = document.getElementById('mainrow');
+		var card = document.getElementById('card');
+		var root = document.querySelector('.root');
+		if (!grid || !main || !card || !root) return;
+
+		if (window.innerWidth <= MOBILE_MAX) {
+			grid.style.gridTemplateColumns = '';
+			grid.style.width = '';
+			card.style.width = '';
+			return;
+		}
+
+		var gap = 14;
+		var cwrap = card.parentElement;      /* .cardwrap */
+		var label = cwrap.querySelector('.card-label');
+		var labelH = label ? label.getBoundingClientRect().height : 0;
+		var cwGap = parseFloat(getComputedStyle(cwrap).rowGap) || 12;
+
+		/* width available to the grid = content width of .root */
+		var cs = getComputedStyle(root);
+		var contentW = root.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+		/* height available to the grid = mainrow height minus the label row */
+		var availH = main.clientHeight - labelH - cwGap;
+
+		/* square edge for a cols x rows arrangement, bounded by width and height */
+		function edgeFor(cols, rows) {
+			var byW = (contentW - (cols - 1) * gap) / cols;
+			var byH = (availH - (rows - 1) * gap) / rows;
+			return Math.max(0, Math.min(byW, byH));
+		}
+
+		var rowEdge = edgeFor(4, 1);   /* one row of four */
+		var gridEdge = edgeFor(2, 2);  /* two by two */
+
+		var cols, edge;
+		if (gridEdge > rowEdge) { cols = 2; edge = gridEdge; }
+		else { cols = 4; edge = rowEdge; }
+
+		var blockW = cols * edge + (cols - 1) * gap;
+		grid.style.gridTemplateColumns = 'repeat(' + cols + ', ' + edge + 'px)';
+		cwrap.style.width = blockW + 'px';
+		cwrap.style.marginLeft = 'auto';
+		cwrap.style.marginRight = 'auto';
 	}
 
 	/* "BUENOS AIRES, AR" stretches (via letter-spacing) to span exactly the

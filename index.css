@@ -105,11 +105,18 @@ html, body {
 	font-weight: 700;
 }
 
-/* ---------- Big name ---------- */
+/* ---------- Hero: big name + tagline (tagline always sits under the name) ---------- */
+
+.hero {
+	position: relative;
+	z-index: 2;
+	margin: clamp(14px, 2.2vh, 30px) 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
 
 .name {
-	/* breathing room against the navbar */
-	margin: clamp(14px, 2.2vh, 30px) 0 0;
 	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	font-weight: 700;
 	font-size: 12vw; /* fallback; JS fits it to the exact available width */
@@ -123,6 +130,7 @@ html, body {
 	user-select: none;
 	pointer-events: none; /* decorative — must not steal clicks from the nav above it */
 	color: #fafafa;
+	margin: 0;
 }
 
 /* ---------- Main row / card ---------- */
@@ -134,21 +142,23 @@ html, body {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	justify-content: flex-start;
+	justify-content: center;
 	min-height: 0;
-	/* breathing room above (below MARTIN MALLOL) and below (above the footer) */
-	margin-top: clamp(2px, 0.5vh, 8px);
-	margin-bottom: clamp(24px, 3.5vh, 48px);
-	gap: clamp(10px, 1.8vh, 22px);
+	/* breathing room above (below the hero) and below (above the footer) */
+	margin-top: clamp(14px, 2.4vh, 32px);
+	margin-bottom: clamp(20px, 3vh, 40px);
 }
 
-/* Left-aligned tagline, sitting just below MARTIN MALLOL */
+/* Tagline sitting just below MARTIN MALLOL, left-aligned. On wide screens the
+   three parts sit inline on one line; on mobile/tablet they stack into three
+   left-aligned lines. */
 .tagline {
-	margin: 0;
 	width: fit-content;
 	display: flex;
-	flex-direction: column;
-	gap: 1px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	gap: 1px 0.5em;
 	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	font-weight: 300;
 	font-size: 9px;
@@ -160,14 +170,13 @@ html, body {
 	z-index: 3;
 }
 
-.tagline-role {
+.tagline-part {
 	white-space: nowrap;
 }
 
 .cardwrap {
 	position: relative;
-	flex: 1;
-	min-height: 0;
+	flex: none;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -191,8 +200,6 @@ html, body {
 .card {
 	position: relative;
 	padding: 0;
-	flex: 1;
-	min-height: 0;
 }
 
 .cards {
@@ -200,9 +207,11 @@ html, body {
 	/* four equal columns spanning the full page width, like the title */
 	grid-template-columns: repeat(4, 1fr);
 	gap: 14px;
-	height: 100%;
 	perspective: 900px;
 }
+
+/* tiles are always square (width comes from the full-width grid) */
+.cards .proj { aspect-ratio: 1 / 1; }
 
 /* ---------- Project tiles ---------- */
 
@@ -351,6 +360,20 @@ html, body {
 }
 .footer a:hover { color: #fafafa; }
 
+/* The row-of-4 vs 2x2 choice and square sizing are computed in JS (fitCards),
+   which picks whichever yields the larger square that fits the available
+   height. .mainrow centers the resulting block vertically. */
+.mainrow { justify-content: center; }
+
+/* Tablet & mobile (narrow): stack the tagline into 3 left-aligned lines. */
+@media (max-width: 900px) {
+	.tagline {
+		flex-direction: column;
+		justify-content: flex-start;
+		width: fit-content;
+	}
+}
+
 /* ---------- Mobile: 2-column grid of squares ---------- */
 
 @media (max-width: 640px) {
@@ -371,16 +394,16 @@ html, body {
 	   the big decorative name already carries it */
 	.brand { display: none; }
 
-	.name { margin: 10px 0 0; }
+	.hero { margin: 10px 0 0; }
 
-	.mainrow { flex: none; margin-top: 20px; flex-direction: column; align-items: stretch; gap: 18px; }
+	.mainrow { flex: none; margin-top: 16px; margin-bottom: 0; flex-direction: column; align-items: stretch; }
 
-	/* on phones the tagline flows above the grid instead of floating left */
+	/* on phones the tagline stacks into 3 left-aligned lines */
 	.tagline {
-		position: static;
-		transform: none;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: fit-content;
 		max-width: none;
-		padding: 0 2px;
 	}
 
 	.cardwrap { width: 100%; flex: none; }
