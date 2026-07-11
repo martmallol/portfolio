@@ -14,7 +14,7 @@ html, body {
 	width: 100vw;
 	background: #0a0a0b;
 	color: #f0efec;
-	font-family: 'Mulish', system-ui, sans-serif;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	display: flex;
 	flex-direction: column;
 	padding: 26px clamp(24px, 3.4vw, 56px) 22px;
@@ -39,7 +39,7 @@ html, body {
 	inset: 0;
 	pointer-events: none;
 	z-index: 0;
-	font-family: 'Mulish', system-ui, sans-serif;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	font-size: 15px;
 	color: rgba(240,239,236,0.28);
 }
@@ -54,7 +54,7 @@ html, body {
 	align-items: center;
 	position: relative;
 	z-index: 10; /* stay above the big decorative name so links stay clickable */
-	font-family: 'Mulish', system-ui, sans-serif;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 }
 
 .brand {
@@ -67,22 +67,22 @@ html, body {
 }
 
 .brand-name {
-	font-family: 'Mulish', system-ui, sans-serif;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	font-weight: 700;
-	font-size: 15px;
+	font-size: 13px;
 	letter-spacing: -0.02em;
 	color: #fafafa;
 }
 
 .brand-loc {
 	font-weight: 300;
-	font-size: 10px;
+	font-size: 9px;
 	letter-spacing: 0.2em;
 	color: rgba(240,239,236,0.5);
 }
 
 .navlink {
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: 400;
 	letter-spacing: 0.16em;
 	color: rgba(240,239,236,0.62);
@@ -108,13 +108,13 @@ html, body {
 /* ---------- Big name ---------- */
 
 .name {
-	/* less breathing room against the navbar */
-	margin: 2px 0 0;
-	font-family: 'Mulish', system-ui, sans-serif;
-	font-weight: 600;
+	/* breathing room against the navbar */
+	margin: clamp(14px, 2.2vh, 30px) 0 0;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+	font-weight: 700;
 	font-size: 12vw; /* fallback; JS fits it to the exact available width */
 	line-height: 0.9;
-	letter-spacing: -0.06em;
+	letter-spacing: -0.04em;
 	white-space: nowrap;
 	display: block;
 	width: 100%;
@@ -152,9 +152,9 @@ html, body {
 	display: flex;
 	flex-direction: column;
 	gap: 1px;
-	font-family: 'Mulish', system-ui, sans-serif;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	font-weight: 300;
-	font-size: 10px;
+	font-size: 9px;
 	line-height: 1.4;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
@@ -167,10 +167,14 @@ html, body {
 	white-space: nowrap;
 }
 
-/* Hide the left tagline once the centered card grid gets close enough
-   to overlap it (but above the mobile breakpoint, where it reflows) */
+/* Once the centered card grid gets close enough to overlap the vertically-
+   centered tagline (but above the mobile breakpoint), move it up to sit
+   between MARTIN MALLOL and SELECTED WORK, still left-aligned. */
 @media (max-width: 1250px) and (min-width: 641px) {
-	.tagline { display: none; }
+	.tagline {
+		top: 0;
+		transform: none;
+	}
 }
 
 .cardwrap {
@@ -188,8 +192,8 @@ html, body {
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
-	font-family: 'Mulish', system-ui, sans-serif;
-	font-size: 11px;
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+	font-size: 10px;
 	letter-spacing: 0.18em;
 	color: rgba(240,239,236,0.55);
 	padding: 0 2px;
@@ -273,8 +277,8 @@ html, body {
 	display: inline-flex;
 	align-items: center;
 	gap: clamp(3px, 2.5cqmin, 6px);
-	font-family: 'Mulish', system-ui, sans-serif;
-	font-size: clamp(9px, 6cqmin, 15px);
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+	font-size: clamp(8px, 5.3cqmin, 13px);
 	line-height: 1;
 	color: rgba(240,239,236,0.85);
 }
@@ -288,14 +292,14 @@ html, body {
 
 .pt {
 	font-weight: 700;
-	font-size: clamp(13px, 9cqmin, 24px);
+	font-size: clamp(12px, 8cqmin, 21px);
 	line-height: 1.15;
 	color: #fafafa;
 }
 
 .ptech {
-	font-family: 'Mulish', system-ui, sans-serif;
-	font-size: clamp(9px, 5.5cqmin, 14px);
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+	font-size: clamp(8px, 5cqmin, 12px);
 	letter-spacing: 0.04em;
 	color: rgba(240,239,236,0.4);
 	margin-top: clamp(4px, 3cqmin, 9px);
@@ -310,7 +314,7 @@ html, body {
 
 .desc p {
 	margin: 0;
-	font-size: clamp(11px, 7cqmin, 18px);
+	font-size: clamp(10px, 6.3cqmin, 16px);
 	line-height: 1.4;
 	color: rgba(240,239,236,0.92);
 }
@@ -324,8 +328,8 @@ html, body {
 }
 
 .view {
-	font-family: 'Mulish', system-ui, sans-serif;
-	font-size: clamp(9px, 5.5cqmin, 14px);
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
+	font-size: clamp(8px, 5cqmin, 12px);
 	letter-spacing: 0.1em;
 	color: var(--ac);
 }
@@ -341,9 +345,9 @@ html, body {
 	align-items: center;
 	position: relative;
 	z-index: 3;
-	font-family: 'Mulish';
+	font-family: 'Zalando Sans Expanded', system-ui, sans-serif;
 	font-weight: 300;
-	font-size: 10px;
+	font-size: 9px;
 	letter-spacing: 0.1em;
 	color: rgba(240,239,236,0.4);
 }
@@ -375,7 +379,7 @@ html, body {
 	   the big decorative name already carries it */
 	.brand { display: none; }
 
-	.name { margin: 2px 0 0; }
+	.name { margin: 10px 0 0; }
 
 	.mainrow { flex: none; margin-top: 20px; flex-direction: column; align-items: stretch; gap: 18px; }
 
@@ -399,6 +403,7 @@ html, body {
 
 	.cards .proj { aspect-ratio: 1 / 1; }
 
-	/* pin the footer to the bottom of the page on mobile, with air above it */
-	.footer { margin-top: auto; padding-top: 32px; }
+	/* pin the footer to the bottom of the page on mobile, with air above it,
+	   and center the copyright instead of right-aligning it */
+	.footer { margin-top: auto; padding-top: 32px; justify-content: center; }
 }
