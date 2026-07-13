@@ -73,15 +73,35 @@
 		var rowEdge = edgeFor(4, 1);   /* one row of four */
 		var gridEdge = edgeFor(2, 2);  /* two by two */
 
-		var cols, edge;
-		if (gridEdge > rowEdge) { cols = 2; edge = gridEdge; }
-		else { cols = 4; edge = rowEdge; }
+		var cols, rows, edge;
+		if (gridEdge > rowEdge) { cols = 2; rows = 2; edge = gridEdge; }
+		else { cols = 4; rows = 1; edge = rowEdge; }
 
 		var blockW = cols * edge + (cols - 1) * gap;
 		grid.style.gridTemplateColumns = 'repeat(' + cols + ', ' + edge + 'px)';
 		cwrap.style.width = blockW + 'px';
 		cwrap.style.marginLeft = 'auto';
 		cwrap.style.marginRight = 'auto';
+
+		var blockH = rows * edge + (rows - 1) * gap + labelH + cwGap;
+		fitTagline(availH - blockH);
+	}
+
+	/* Tagline under the name: on wide screens it sits on one line by default.
+	   If fitCards finds more vertical room than the cards actually need
+	   (spareH), stack the tagline into 3 lines to use that space instead of
+	   leaving it empty; otherwise keep it on one line. */
+	function fitTagline(spareH) {
+		var tagline = document.querySelector('.tagline');
+		if (!tagline || window.innerWidth <= MOBILE_MAX) return;
+
+		tagline.classList.remove('tagline--stack');
+		var oneLineH = tagline.getBoundingClientRect().height;
+		tagline.classList.add('tagline--stack');
+		var threeLineH = tagline.getBoundingClientRect().height;
+		var extra = threeLineH - oneLineH;
+
+		if (spareH < extra) tagline.classList.remove('tagline--stack');
 	}
 
 	/* "BUENOS AIRES, AR" stretches (via letter-spacing) to span exactly the

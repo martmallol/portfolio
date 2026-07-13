@@ -374,6 +374,14 @@ html, body {
 	}
 }
 
+/* Desktop: JS (fitCards) adds this class when there's vertical room to spare
+   between the hero and the cards, stacking the tagline into 3 lines instead
+   of leaving that space empty. Removed again as soon as space gets tight. */
+.tagline--stack {
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
 /* ---------- Mobile: 2-column grid of squares ---------- */
 
 @media (max-width: 640px) {
